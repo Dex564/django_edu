@@ -9,7 +9,7 @@ def product_list(request, category_slug=None): # cat_slug это парамер�
     category = None
 
     if category_slug:
-        category = get_object_or_404(Category, category_slug=category_slug) # получаем категории из бд по category_slug
+        category = get_object_or_404(Category, slug=category_slug) # получаем категории из бд по category_slug
         products = products.filter(category=category)
     
     return render(request, 'main/product/list.html', 
