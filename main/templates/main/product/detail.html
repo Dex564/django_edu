@@ -1,6 +1,4 @@
 {% extends "main/base.html" %}
 {% block content %}
-{% if product.image %}
-{{ product.image }}
-{% endif %}
+<img src="{{ product.image.url }}" class="img-fluid rounded" alt="{{ product.name }}">
 {% endblock %}
