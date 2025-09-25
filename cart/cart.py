@@ -18,9 +18,9 @@ class Cart:
             self.cart[product_id] = {'quantity': 0, 'price': str(product.price)}
 
         if override_quantity:
-            self.cart[product_id][quantity] = quantity
+            self.cart[product_id]['quantity'] = quantity
         else:
-            self.cart[product_id][quantity] += quantity
+            self.cart[product_id]['quantity'] += quantity
         self.save()
             
     
@@ -31,7 +31,7 @@ class Cart:
         product_id = str(product.id)
         if product_id in self.cart:
             del self.cart[product_id]
-            self.save()
+        self.save()
 
     def __iter__(self): # проходится по всем товарам в нашей корзине и выводит их, позволяет с ними работать
         product_ids = self.cart.keys()
@@ -53,5 +53,5 @@ class Cart:
         return sum(float(item['price'] * item['quantity']) for item in self.cart.values())
     
     def clear(self):
-        del self.session[settings.CART_SESSiON_ID]
+        del self.session[settings.CART_SESSION_ID]
         self.save()
